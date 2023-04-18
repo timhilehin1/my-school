@@ -1,4 +1,4 @@
-export const NavItems = [ 
+export const NavItems = [
     {
         id:1,
         title:"Home",
@@ -8,7 +8,7 @@ export const NavItems = [
 
     {
         id:2,
-        title:" Academics",
+        title:"Academics",
         path:"./Academics",
         cName:"nav-items"
     },

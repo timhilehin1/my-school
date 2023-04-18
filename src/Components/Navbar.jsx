@@ -1,11 +1,13 @@
-import React from 'react'
+import {React, useState} from 'react'
 import logo from '../assets/small logo.png'
 import { NavItems } from './NavItems';
+import Dropdown from './Dropdown';
 import { AiOutlineMenu} from "react-icons/ai";
 import { IoIosArrowDown } from "react-icons/io";
 
 
-function Navbar(){
+function Navbar() {
+    const [showDropdown, setDropdown] = useState(false)
     return (
         <>
         <section className="flex md:hidden px-2 py-3 header justify-between  items-center container mx-auto">
@@ -24,21 +26,30 @@ function Navbar(){
 
         <ul className="flex gap-6 nav-content items-center">
             {NavItems.map(el=>{
-               
-                return <li key={el.id} className='flex items-center'>{el.title}<IoIosArrowDown style={{fontSize: "1.3em"}}/></li>
+                if (el.title === 'Academics') {
+                    return (
+                        <>
+                        <li key={el.id} onMouseEnter={() => {setDropdown(true)}} onMouseLeave={() => {setDropdown(false)}} className='flex items-center admissions'>{el.title}<IoIosArrowDown style={{ fontSize: "1.3em" }} />
+                                {showDropdown && <Dropdown />}
+                        </li>
+
+                            </>
+                       )
+                }
+                 return (
+                            <li key={el.id} className='flex items-center ind-Item'>{el.title}<IoIosArrowDown style={{ fontSize: "1.3em" }} />
+                            </li>
+
+                       )
             })}
-                {/* <li className='flex items-center'>Home<IoIosArrowDown style={{fontSize: "1.3em"}}/></li>
-                <li className='flex items-center'>Academics<IoIosArrowDown style={{fontSize: "1.3em"}}/></li>
-                <li className='flex items-center'>Admissions<IoIosArrowDown style={{fontSize: "1.3em"}}/></li>
-                <li className='flex items-center'>About<IoIosArrowDown style={{fontSize: "1.3em"}}/></li>
-                <li className='flex items-center'>Contact<IoIosArrowDown style={{fontSize: "1.3em"}}/></li> */}
+
             </ul>
-        
+
         <div>
         Search
         </div>
 
-        </section>
+            </section>
         </>
     )
 }
