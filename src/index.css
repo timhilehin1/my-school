@@ -10,6 +10,10 @@
 
 }
 
+.test{
+    border: 1px solid red;
+}
+
 html {
     font-size: 15px;
 }
@@ -46,6 +50,4 @@ html {
     color: #5AAF4B;
 }
 
-.hero-image{
-    border: 1px solid red;
-}
+
