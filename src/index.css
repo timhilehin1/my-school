@@ -11,7 +11,7 @@
 }
 
 
-.test{
+.test {
     border: 1px solid red;
 }
 
@@ -51,37 +51,45 @@ html {
     color: #5AAF4B;
 }
 
-.tes{
+.tes {
     border: 1px solid green;
 }
 
-.Buildings{
+/* .Buildings{
     border: 1px solid red;
-}
-/* .section{
-    border: 1px solid green; 
 } */
+
 
 .swiper {
     width: 100%;
     height: 100%;
-  }
-  
-  .swiper-slide {
+}
+
+.swiper-button-next {
+    background: none;
+    color: #5AAF4B !important;
+}
+
+.swiper-button-prev {
+    background: none;
+    font-size: 10px;
+    color: #5AAF4B !important;
+}
+
+.swiper-slide {
     /* text-align: center;
     font-size: 18px;
     background: #fff; */
-  
+
     /* Center slide text vertically */
     /* display: flex;
     justify-content: center;
     align-items: center; */
-  }
-  
-  /* .swiper-slide img {
+}
+
+/* .swiper-slide img {
     display: block;
     width: 100%;
     height: 100%;
     object-fit: cover;
   } */
-  

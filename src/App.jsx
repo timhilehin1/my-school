@@ -6,6 +6,7 @@ import HistoryCounter from './Components/HistoryCounter'
 import Motto from './Components/Motto'
 import Academics from './Components/Academics'
 import StudentLife from './Components/StudentLife'
+import Buildings from './Components/Buildings'
 import Teachers from './Components/Teachers'
 
 
@@ -21,6 +22,7 @@ function App() {
               <Motto/>
               {/* <Academics/> */}
               <StudentLife/>
+              <Buildings />
               <Teachers/>
           </section>
 
