@@ -8,6 +8,8 @@ function HistoryCounter() {
     const targetRef = useRef(null);
     const [isVisible, setIsVisible] = useState(false);
 
+
+    //review what's happening here
      useEffect(() => {
     const observer = new IntersectionObserver(
       ([entry]) => setIsVisible(entry.isIntersecting)
@@ -31,7 +33,7 @@ function HistoryCounter() {
                         <div key={hist.id} className='mt-5 md:mt-0 flex flex-row gap-8 text-white'>
                             <p>{hist.logo}</p>
 
-                            <div ref={targetRef} className='flex flex-col'>
+                            <div ref={targetRef} className='flex flex-col cursor-pointer '>
                                 { isVisible && <CountUp
                                     separator=""
                                     className='text-2xl font-medium' end={hist.No} />}
