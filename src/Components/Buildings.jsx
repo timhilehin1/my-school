@@ -20,9 +20,9 @@ function Buildings(){
         {
             eventsData.map(ev=>{
                 return (
-                    <>
+                    <div key={ev.id}>
 
-                    <div className='events flex gap-8 mt-8  pb-4'>
+                    <div  className='events flex gap-8 mt-8  pb-4'>
                     <div className="">
                     <p className="lg:text-xl text-lg font-bold">{ev.date}</p>
                     <p className="text-xl">{ev.month}</p>
@@ -38,7 +38,7 @@ function Buildings(){
 
                     </div>
                     <hr className="bg-[#f1f5f9]"></hr>
-                    </>
+                    </div>
 
                 )
             })

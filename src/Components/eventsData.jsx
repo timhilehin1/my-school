@@ -21,7 +21,7 @@ export const eventsData = [
     },
 
     {
-        id:2,
+        id:3,
         date:"23",
         month:"Aug",
         title:"Valedictory Service",

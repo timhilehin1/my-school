@@ -8,6 +8,7 @@ import Academics from './Components/Academics'
 import StudentLife from './Components/StudentLife'
 import Buildings from './Components/Buildings'
 import Teachers from './Components/Teachers'
+import Footer from './Components/Footer'
 
 
 function App() {
@@ -23,7 +24,8 @@ function App() {
               {/* <Academics/> */}
               <StudentLife/>
               <Buildings />
-              <Teachers/>
+              <Teachers />
+              <Footer/>
           </section>
 
 

@@ -76,6 +76,20 @@ html {
     color: #5AAF4B !important;
 }
 
+.swiper-pagination {
+    bottom: -200px;
+    /* adjust this value to move the bullets further down */
+}
+
+/* .mySwiper1 .swiper-pagination-bullet {
+    margin-top: 50px;
+    z-index: 5;
+
+
+} */
+
+
+
 .swiper-slide {
     /* text-align: center;
     font-size: 18px;
