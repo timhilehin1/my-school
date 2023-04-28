@@ -25,8 +25,11 @@ function App() {
               <StudentLife/>
               <Buildings />
               <Teachers />
-              <Footer/>
           </section>
+
+          <section>
+              <Footer />
+              </section>
 
 
     </div>
