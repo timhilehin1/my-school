@@ -9,15 +9,20 @@ import StudentLife from './Components/StudentLife'
 import Buildings from './Components/Buildings'
 import Teachers from './Components/Teachers'
 import Footer from './Components/Footer'
+import Portal from './Components/Portal'
+import PortalSignUp from './Components/PortalSignUp'
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+
 
 
 function App() {
 
-  return (
-    <div className="App">
-      <Header/>
-          <Navbar />
-          <Hero />
+   const Home=() =>{
+    return (
+      <>
+      <Header />
+      <Navbar /> 
+      <Hero />
           <section className='px-4 lg:px-8 py-2'>
               <HistoryCounter />
               <Motto/>
@@ -26,13 +31,22 @@ function App() {
               <Buildings />
               <Teachers />
           </section>
+          <Footer />
+      </>
+    )
+  }
 
-          <section>
-              <Footer />
-              </section>
-
-
-    </div>
+  return (
+    <div className="App">
+    <Router>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="portal" element={<Portal />}/>
+        <Route path='portalsignup' element={<PortalSignUp/>}/>
+        
+      </Routes>
+    </Router>
+  </div>
   )
 }
 

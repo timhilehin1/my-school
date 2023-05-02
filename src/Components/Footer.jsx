@@ -9,13 +9,16 @@ import { IoIosArrowDropup } from "react-icons/io";
 
 function Footer() {
 
-    useEffect(() => {
- window.scrollTo({top: 0, left: 0, behavior: 'smooth'});
-    },[])
+//     useEffect(() => {
+//  window.scrollTo({top: 0, left: 0, behavior: 'smooth'});
+//     },[])
 
     const [year, setYear] = useState(new Date().getFullYear());
     return (
-        <div className="mt-12 bg-slate-200 px-8 pt-4"  >
+
+        <div className="bg-slate-200">
+        <div className="mt-12 bg-slate-200 px-8 pt-4 md:flex lg:justify-around gap-8">
+
             <section className="leading-loose">
                     <div className="flex items-center gap-4">
                      <img className='h-11' src={logo} />
@@ -57,13 +60,22 @@ function Footer() {
                 <p>FAQS</p>
             </section>
 
-            <section className="flex justify-center">
+            <section className="flex cursor-pointer justify-center lg:hidden">
                 <IoIosArrowDropup onClick={() => {
                     window.scrollTo({top: 0, left: 0, behavior: 'smooth'});
                 }} size={40}/>
             </section>
 
-          <p className="m-auto flex justify-center"> { year } &copy; Oladapo Timilehin Raspadori </p>
+          <p className="m-auto flex justify-center lg:hidden"> { year } &copy; Oladapo Timilehin Raspadori </p>
+        </div>
+
+        <section className=" hidden lg:flex cursor-pointer justify-center mt-8">
+                <IoIosArrowDropup onClick={() => {
+                    window.scrollTo({top: 0, left: 0, behavior: 'smooth'});
+                }} size={40}/>
+            </section>
+
+            <p className="m-auto hidden justify-center lg:flex"> { year } &copy; Oladapo Timilehin Raspadori </p>
         </div>
     )
 }
