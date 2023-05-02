@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import logo from '../assets/small logo.png'
 import { Link } from "react-router-dom";
-import app from "../firebaseConfig";
-import { collection, addDoc, doc, setDoc } from "firebase/firestore";
+import {db} from '../firebaseConfig'
+import { collection, addDoc, doc, setDoc,  query, where  } from "firebase/firestore";
 import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword  } from "firebase/auth";
 
 
@@ -15,6 +15,7 @@ function PortalSignUp() {
         firstName:'',
         lastName:'',
         class:'',
+        gender:'',
         email:'',
         password:'',
         confirmPassword:''
@@ -35,7 +36,17 @@ function PortalSignUp() {
     function handleFormData(e) {
         createUserWithEmailAndPassword(auth, formData.email, formData.confirmPassword)
             .then((studentCredential) => {
-            console.log(studentCredential)
+                const studentDetailsRef = collection(db, "StudentDetails");
+                //filter saved collection with class entered nd store fees as part of stored details.
+            // console.log(studentCredential)
+            const q = query(citiesRef, where(formData.class, "==", currentClass));
+              setDoc(doc(studentDetailsRef, formData.firstName), {
+                  firstName : formData.firstName,
+                  lastName : formData.lastName,
+                  gender : formData.gender,
+                  class: formData.class,
+                  fees: ''
+              })
             })
             .catch((error) => {
                 console.log(error.code)
@@ -79,6 +90,19 @@ function PortalSignUp() {
              name="lastName"
              onChange={handleChange}
               />
+              </section>
+
+              <section className="flex flex-col gap-2">
+             <label htmlFor="gender">Gender</label>
+             <select
+             className='p-0.5 rounded'
+            name="gender"
+            required
+            onChange={handleChange}>
+             <option  value="default" disabled>Select Gender</option>
+            <option value="m">Male</option>
+            <option value="f">Female</option>
+            </select>
               </section>
 
             <section className="flex flex-col gap-2">
