@@ -1,9 +1,15 @@
 import React, { useState } from "react";
 import logo from '../assets/small logo.png'
-import {  Link } from "react-router-dom";
+import { Link } from "react-router-dom";
+import app from "../firebaseConfig";
+import { collection, addDoc } from "firebase/firestore";
+import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword  } from "firebase/auth";
 
 
-function PortalSignUp(){
+
+function PortalSignUp() {
+
+    const auth = getAuth();
 
     const [formData, setFormData] = useState({
         firstName:'',
@@ -26,10 +32,18 @@ function PortalSignUp(){
 
     }
 
-    function handleFormData(e){
+    function handleFormData(e) {
+        createUserWithEmailAndPassword(auth, formData.email, formData.confirmPassword)
+            .then((studentCredential) => {
+            console.log(studentCredential)
+            })
+            .catch((error) => {
+                console.log(error.code)
+                console.log(error.message)
+            })
         console.log(formData)
-       e.preventDefault();
-
+        e.preventDefault();
+    //   e.target.reset();
        //clear fields when action is successful
     }
 
@@ -40,7 +54,7 @@ function PortalSignUp(){
          <section className="bg-gray-400 px-8 portal-signup flex h-full  flex-col  md:h-auto  gap-4 py-4 md:p-8  w-96 ">
              <p className="text-center mx-auto"><img className='h-11' src={logo}/></p>
              <p className="text-center text-2xl font-semibold">Sign Up</p>
-             
+
 
              <p className='2xl text-center '>Already have an account? <span className="underline underline-offset-1"><Link to="/loginportal">LOG-IN</Link></span></p>
 
@@ -87,7 +101,7 @@ function PortalSignUp(){
 
               <section className="flex flex-col gap-2">
              <label htmlFor="email">Email</label>
-             <input 
+             <input
               className='p-0.5 rounded'
              type="email"
              name="email"
