@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import logo from '../assets/small logo.png'
 import { Link } from "react-router-dom";
-import {db} from '../firebaseConfig'
-import { collection, addDoc, doc, setDoc,  query, where  } from "firebase/firestore";
+import db from '../firebaseConfig'
+import { collection, addDoc, doc, setDoc,  query, where, getDoc, getDocs, onSnapshot } from "firebase/firestore";
 import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword  } from "firebase/auth";
 
 
@@ -18,7 +18,8 @@ function PortalSignUp() {
         gender:'',
         email:'',
         password:'',
-        confirmPassword:''
+        confirmPassword: '',
+        fees:''
     })
 
     function handleChange(event){
@@ -30,30 +31,50 @@ function PortalSignUp() {
              [name] : value
          }
      })
-
     }
 
-    function handleFormData(e) {
+  async function QueryFeeswithClass() {
+       //go through list of of collection, and run the filter query, set the result of the query as student fees.
+        const StudentDetailsRef = collection(db, "StudentDetails")
+        const q = query(StudentDetailsRef, where('currentClass', '==', formData.class))
+        const querySnapshot = await getDocs(q)
+
+        querySnapshot.forEach((doc) => {
+            setFormData({ ...formData, fees: doc.data().fees })
+        }
+      )
+
+      //save the student's details to db(details plus fees)
+      await addDoc(collection(db, "studentSignUpDetails",), formData).then
+          (() => {
+            console.log('data stored')
+          })
+          .catch(() => {
+              console.log('aan error occured')
+          })
+    }
+
+    async function handleFormData(e) {
+        e.preventDefault();
+
+//          const querySnapshot = await getDocs(collection(db, "StudentDetails"));
+//         querySnapshot.forEach((doc) => {
+//   // doc.data() is never undefined for query doc snapshots
+//     console.log(doc.id, " => ", doc.data());
+//         });
+
+
         createUserWithEmailAndPassword(auth, formData.email, formData.confirmPassword)
             .then((studentCredential) => {
-                const studentDetailsRef = collection(db, "StudentDetails");
-                //filter saved collection with class entered nd store fees as part of stored details.
-            // console.log(studentCredential)
-            const q = query(citiesRef, where(formData.class, "==", currentClass));
-              setDoc(doc(studentDetailsRef, formData.firstName), {
-                  firstName : formData.firstName,
-                  lastName : formData.lastName,
-                  gender : formData.gender,
-                  class: formData.class,
-                  fees: ''
-              })
+                console.log(studentCredential)
+                QueryFeeswithClass();
             })
             .catch((error) => {
                 console.log(error.code)
                 console.log(error.message)
             })
-        console.log(formData)
-        e.preventDefault();
+
+
     //   e.target.reset();
        //clear fields when action is successful
     }
@@ -97,9 +118,10 @@ function PortalSignUp() {
              <select
              className='p-0.5 rounded'
             name="gender"
+            defaultValue=""
             required
             onChange={handleChange}>
-             <option  value="default" disabled>Select Gender</option>
+             <option  value="" disabled selected>Select Gender</option>
             <option value="m">Male</option>
             <option value="f">Female</option>
             </select>
@@ -111,9 +133,9 @@ function PortalSignUp() {
              className='p-0.5 rounded'
             name="class"
             required
-            defaultValue="Select Class"
+             defaultValue=""
             onChange={handleChange}>
-             <option  value="default" disabled>Select your current class</option>
+             <option value="" disabled selected>Select your current class</option>
             <option value="Jss1">JSS1</option>
             <option value="JSS2">JSS2</option>
             <option value="JSS3">JSS3</option>
