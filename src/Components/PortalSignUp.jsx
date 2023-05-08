@@ -62,11 +62,11 @@ function PortalSignUp() {
 
         createUserWithEmailAndPassword(auth, formData.email, formData.confirmPassword)
             .then((studentCredential) => {
-              
+
                 QueryFeeswithClass();
                 alert('user registered')
                       e.target.reset();
-               
+
             })
             .catch((error) => {
                 alert('an error occured')
@@ -83,7 +83,7 @@ function PortalSignUp() {
     return (
          <div className="portal h-screen brightness-75 flex justify-center items-center pt-8  ">
              {/* <div className="template"> */}
-         <section className="bg-gray-400  portal-signup flex h-full  flex-col  md:h-auto  gap-4 py-4 md:p-8  w-96 ">
+         <section className="bg-gray-400  portal-signup flex h-full  flex-col  md:h-auto px-4  gap-4 py-4 md:p-8  w-96 ">
              <p className="text-center mx-auto"><img className='h-11' src={logo}/></p>
              <p className="text-center text-2xl font-semibold">Sign Up</p>
 
