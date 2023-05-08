@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import logo from '../assets/small logo.png'
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import db from '../firebaseConfig'
 import { collection, addDoc, doc, setDoc,  query, where, getDoc, getDocs, onSnapshot } from "firebase/firestore";
 import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword  } from "firebase/auth";
@@ -11,6 +11,7 @@ import { async } from "@firebase/util";
 function PortalSignUp() {
 
     const auth = getAuth();
+    const Navigate = useNavigate()
 
     const [formData, setFormData] = useState({
         firstName:'',
@@ -50,6 +51,7 @@ function PortalSignUp() {
     //   save the student's details to db(details plus fees)
       await addDoc(collection(db, "studentSignUpDetails"), upDatedFormData).then
           (() => {
+              Navigate("/portalLogin")
             alert('data stored')
           })
           .catch(() => {

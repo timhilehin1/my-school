@@ -1,8 +1,13 @@
 import { React, useState } from "react";
 import logo from '../assets/small logo.png'
-import { Link } from "react-router-dom";
+import { Link, useNavigate  } from "react-router-dom";
+import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
+
 
 function PortalLogin() {
+
+    const auth = getAuth();
+    const navigate = useNavigate();
 
     const [formData, setFormData] = useState({
         email: '',
@@ -21,9 +26,19 @@ function PortalLogin() {
 
     }
 
+    
+
     function handleSubmit(e) {
         e.preventDefault()
-          console.log(formData)
+        signInWithEmailAndPassword(auth, formData.email, formData.password)
+        .then((userCredentials)=>{
+            alert('user logged in')
+            console.log(userCredentials)
+        })
+        .catch((error)=>{
+            alert('an error occured')
+            console.log(error)
+        })
     }
 
 
