@@ -18,7 +18,7 @@ function Portal(){
 
         <section className="flex gap-8 justify-center">
        <Link to="/portalsignup"><button className='bg-[#0d2935] px-2 py-2 rounded text-lg'>Sign Up</button></Link> 
-       <Link to="login"><button className='bg-[#0d2935] px-2 py-2 rounded text-lg'>Login</button></Link> 
+       <Link to=""><button className='bg-[#0d2935] px-2 py-2 rounded text-lg'>Login</button></Link> 
         </section>
             </div>
         

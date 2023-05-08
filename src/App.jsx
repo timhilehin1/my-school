@@ -11,6 +11,7 @@ import Teachers from './Components/Teachers'
 import Footer from './Components/Footer'
 import Portal from './Components/Portal'
 import PortalSignUp from './Components/PortalSignUp'
+import PortalLogin from './Components/PortalLogin'
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
 
@@ -43,7 +44,7 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="portal" element={<Portal />}/>
         <Route path='portalsignup' element={<PortalSignUp/>}/>
-        
+        <Route path='portalLogin' element={<PortalLogin/>}/>
       </Routes>
     </Router>
   </div>

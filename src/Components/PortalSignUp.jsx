@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import db from '../firebaseConfig'
 import { collection, addDoc, doc, setDoc,  query, where, getDoc, getDocs, onSnapshot } from "firebase/firestore";
 import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword  } from "firebase/auth";
+import { async } from "@firebase/util";
 
 
 
@@ -39,56 +40,55 @@ function PortalSignUp() {
         const q = query(StudentDetailsRef, where('currentClass', '==', formData.class))
         const querySnapshot = await getDocs(q)
 
+        const upDatedFormData = { ...formData, password:'',  confirmPassword: ''}
         querySnapshot.forEach((doc) => {
-            setFormData({ ...formData, fees: doc.data().fees })
+            upDatedFormData.fees = doc.data().fees;
         }
       )
 
-      //save the student's details to db(details plus fees)
-      await addDoc(collection(db, "studentSignUpDetails",), formData).then
+
+    //   save the student's details to db(details plus fees)
+      await addDoc(collection(db, "studentSignUpDetails"), upDatedFormData).then
           (() => {
-            console.log('data stored')
+            alert('data stored')
           })
           .catch(() => {
-              console.log('aan error occured')
+              alert('unable to save fltered details occured')
           })
     }
 
     async function handleFormData(e) {
         e.preventDefault();
 
-//          const querySnapshot = await getDocs(collection(db, "StudentDetails"));
-//         querySnapshot.forEach((doc) => {
-//   // doc.data() is never undefined for query doc snapshots
-//     console.log(doc.id, " => ", doc.data());
-//         });
-
-
         createUserWithEmailAndPassword(auth, formData.email, formData.confirmPassword)
             .then((studentCredential) => {
-                console.log(studentCredential)
+              
                 QueryFeeswithClass();
+                alert('user registered')
+                      e.target.reset();
+               
             })
             .catch((error) => {
+                alert('an error occured')
                 console.log(error.code)
                 console.log(error.message)
             })
 
 
-    //   e.target.reset();
+
        //clear fields when action is successful
     }
 
 
     return (
-         <div className="portal h-screen brightness-75 flex justify-center items-center pt-8  lg:16">
+         <div className="portal h-screen brightness-75 flex justify-center items-center pt-8  ">
              {/* <div className="template"> */}
-         <section className="bg-gray-400 px-8 portal-signup flex h-full  flex-col  md:h-auto  gap-4 py-4 md:p-8  w-96 ">
+         <section className="bg-gray-400  portal-signup flex h-full  flex-col  md:h-auto  gap-4 py-4 md:p-8  w-96 ">
              <p className="text-center mx-auto"><img className='h-11' src={logo}/></p>
              <p className="text-center text-2xl font-semibold">Sign Up</p>
 
 
-             <p className='2xl text-center '>Already have an account? <span className="underline underline-offset-1"><Link to="/loginportal">LOG-IN</Link></span></p>
+             <p className='2xl text-center '>Already have an account? <span className="underline underline-offset-1"><Link to="/portalLogin">LOG-IN</Link></span></p>
 
              <form className='flex flex-col gap-4' onSubmit={handleFormData}>
              <section className="flex flex-col gap-2">
