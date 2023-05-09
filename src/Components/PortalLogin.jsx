@@ -26,7 +26,7 @@ function PortalLogin() {
 
     }
 
-    
+
 
     function handleSubmit(e) {
         e.preventDefault()
@@ -34,6 +34,7 @@ function PortalLogin() {
         .then((userCredentials)=>{
             alert('user logged in')
             console.log(userCredentials)
+            navigate("/studentDashboard")
         })
         .catch((error)=>{
             alert('an error occured')
