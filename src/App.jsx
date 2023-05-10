@@ -14,7 +14,7 @@ import PortalSignUp from './Components/PortalSignUp'
 import PortalLogin from './Components/PortalLogin'
 import StudentDashboard from './Components/StudentDashboard'
 import Sidebar from './Components/Sidebar'
-import Test from './Components/Test'
+import Profile from './Components/Profile'
 import Test1 from './Components/Test1'
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
@@ -49,17 +49,18 @@ function App() {
         <Route path="portal" element={<Portal />}/>
         <Route path='portalsignup' element={<PortalSignUp/>}/>
         <Route path='portalLogin' element={<PortalLogin />} />
-                  {/* <Route path='studentDashboard' element={<StudentDashboard />} /> */}
-          <Route path='studentDashboard'>
-               <section className="studentDashboard py-4 px-4 flex gap-8">
+                  <Route path='studentDashboard/*' element={<section className="studentDashboard block md:flex gap-8">
                       <Sidebar />
                       <div className='main'>
-                          <Route path="test" element={<Test />} />
-                             <Route path="test1" element={<Test1 />}/>
+                              <Routes>
+                              <Route path="profile" element={<Profile />} />
+                              <Route path="test1" element={<Test1 />} />
+                              </Routes>
                        </div>
 
-                  </section>
-          </Route>
+                  </section>}/>
+
+
       </Routes>
     </Router>
   </div>

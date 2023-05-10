@@ -89,7 +89,7 @@ html {
 } */
 
 
-.portal{
+.portal {
     background-image: url('/Hero.jpg');
     background-color: aliceblue;
     background-size: cover;
@@ -97,13 +97,18 @@ html {
     background-position: center;
 }
 
-input{
+input {
     /* padding: .3rem;
     border-radius: .3rem; */
 }
 
 
-.portal-signup{
-/* min-height: 100%; */
-overflow: auto;
+.portal-signup {
+    /* min-height: 100%; */
+    overflow: auto;
 }
+.showSidebar{
+    transform: translateX(100%);
+}
+
+

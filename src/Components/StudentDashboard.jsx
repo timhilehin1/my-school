@@ -1,11 +1,11 @@
 import React from "react";
 import Sidebar from "./Sidebar";
-import Test from "./Test";
+import Test from "./Profile";
 import Test1 from "./Test1";
 
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
-function StudentDashboard({ currentRoute, setCurrentRoute }) {
+function StudentDashboard() {
 
 
     return (
