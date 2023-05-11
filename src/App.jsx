@@ -49,9 +49,9 @@ function App() {
         <Route path="portal" element={<Portal />}/>
         <Route path='portalsignup' element={<PortalSignUp/>}/>
         <Route path='portalLogin' element={<PortalLogin />} />
-                  <Route path='studentDashboard/*' element={<section className="studentDashboard block md:flex gap-8">
+                  <Route path='studentDashboard/*' element={<section className="studentDashboard block md:flex ">
                       <Sidebar />
-                      <div className='main'>
+                      <div className='main w-full bg-[#f3f3f3]'>
                               <Routes>
                               <Route path="profile" element={<Profile />} />
                               <Route path="test1" element={<Test1 />} />

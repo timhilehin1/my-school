@@ -5,7 +5,7 @@ import { AiOutlineMenu } from "react-icons/ai";
 import { BiHome } from "react-icons/bi";
 import { HiOutlineClipboardDocumentList } from "react-icons/hi2";
 import { MdAccountBalance } from "react-icons/md";
-import { AiFillCalendar } from "react-icons/ai";
+import { AiFillCalendar, AiOutlineWarning} from "react-icons/ai";
 import { CiSettings } from "react-icons/ci";
 
 
@@ -20,13 +20,13 @@ const [SideMenu, setSidemenu] = useState(false)
     return (
         <>
 
-        <div className= {`absolute md:relative ${SideMenu ? "translate-x-0" : "-translate-x-full"} bg-[#86efac] w-60 h-screen px-4 py-4 sidebar transition-transform duration-300 ease-in-out`}>
+        <div className= {`absolute md:relative ${SideMenu ? "translate-x-0 md:translate-x-0" : "-translate-x-full md:translate-x-0"} bg-[#86efac] w-60 h-screen px-4 py-4 sidebar transition-transform duration-300 ease-in-out`}>
             <div className="flex gap-4 items-center">
                 <img className='h-11' src={logo} />
                 <p className="text-xl font-bold">Victoria's</p>
             </div>
 
-                <section className="mt-8 leading-10">
+                <section className="mt-10 leading-10 flex flex-col gap-6">
 
                     <Link to="profile">
                         <div className="flex items-center">
@@ -48,14 +48,22 @@ const [SideMenu, setSidemenu] = useState(false)
                         </div>
                         </Link>
 
-                    <Link to="Calendar">
+                    <Link to="calendar">
                             <div className="flex items-center">
                     <AiFillCalendar size={24} />
                             <p>Upcoming Events</p>
                             </div>
+                    </Link>
+
+                     <Link to="disciplinary">
+                            <div className="flex items-center">
+                    <AiOutlineWarning size={24} />
+                            <p>Disciplinary Issues</p>
+                            </div>
                         </Link>
 
-                    <Link to="Calendar">
+
+                    <Link to="settings">
                         <div className="flex items-center">
                       <CiSettings size={24}/>
                             <p>Settings</p>

@@ -107,8 +107,11 @@ input {
     /* min-height: 100%; */
     overflow: auto;
 }
-.showSidebar{
+
+.showSidebar {
     transform: translateX(100%);
 }
 
-
+.mynav{
+    width: 100%;
+}
