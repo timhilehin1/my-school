@@ -51,7 +51,7 @@ function App() {
         <Route path='portalLogin' element={<PortalLogin />} />
                   <Route path='studentDashboard/*' element={<section className="studentDashboard block md:flex ">
                       <Sidebar />
-                      <div className='main w-full bg-[#f3f3f3]'>
+                      <div className='main w-full md:ml-64 bg-[#f3f3f3]'>
                               <Routes>
                               <Route path="profile" element={<Profile />} />
                               <Route path="test1" element={<Test1 />} />

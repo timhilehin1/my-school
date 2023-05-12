@@ -20,7 +20,7 @@ const [SideMenu, setSidemenu] = useState(false)
     return (
         <>
 
-        <div className= {`absolute md:relative ${SideMenu ? "translate-x-0 md:translate-x-0" : "-translate-x-full md:translate-x-0"} bg-[#86efac] w-60 h-screen px-4 py-4 sidebar transition-transform duration-300 ease-in-out`}>
+        <div className= {`absolute md:fixed ${SideMenu ? "translate-x-0 md:translate-x-0" : "-translate-x-full md:translate-x-0"} bg-[#86efac] w-60 h-screen px-4 py-4 sidebar transition-transform duration-300 ease-in-out`}>
             <div className="flex gap-4 items-center">
                 <img className='h-11' src={logo} />
                 <p className="text-xl font-bold">Victoria's</p>

@@ -4,7 +4,10 @@ export default {
   "./index.html",
   "./src/**/*.{js,ts,jsx,tsx}",
   ],
-  theme: {
+    theme: {
+    //     colors: {
+    //      'card' : '#ffffff'
+    //   },
     extend: {},
   },
   plugins: [],
