@@ -112,6 +112,10 @@ input {
     transform: translateX(100%);
 }
 
+.contentt{
+    /* border: 1px solid red; */
+}
+
 .mynav{
     width: 100%;
 }

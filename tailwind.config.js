@@ -5,9 +5,9 @@ export default {
   "./src/**/*.{js,ts,jsx,tsx}",
   ],
     theme: {
-    //     colors: {
-    //      'card' : '#ffffff'
-    //   },
+        colors: {
+         'allwhite' : '#ffffff'
+      },
     extend: {},
   },
   plugins: [],
