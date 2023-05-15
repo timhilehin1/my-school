@@ -5,7 +5,6 @@ import { IoIosArrowDown } from "react-icons/io";
 import { HiDownload } from "react-icons/hi";
 import { AiOutlineMail, AiOutlineClockCircle } from "react-icons/ai";
 import { Link } from "react-router-dom";
-import { useTable } from 'react-table'
 import { TableBody, TableCell, TableHead, TableRow, styled,  Table, tableCellClasses, TableContainer, Paper, CssBaseline } from '@mui/material'
 
 
@@ -23,7 +22,7 @@ function Profile() {
           fontSize: 14,
         },
       }));
-      
+
       const StyledTableRow = styled(TableRow)(({ theme }) => ({
         '&:nth-of-type(odd)': {
           backgroundColor: theme.palette.action.hover,
@@ -33,11 +32,11 @@ function Profile() {
           border: 0,
         },
       }));
-      
+
       function createData(bookNo, bookTitle, issueDate, dueReturn) {
         return { bookNo, bookTitle, issueDate, dueReturn};
       }
-      
+
       const rows = [
         createData('01', 'Richest man in BabyLon', 'issueDate', 'dueReturn'),
         createData('02', 'Richest man in BabyLon', 'issueDate', 'dueReturn'),
@@ -45,9 +44,9 @@ function Profile() {
         createData('04', 'Richest man in BabyLon', 'issueDate', 'dueReturn'),
         createData('05', 'Richest man in BabyLon', 'issueDate', 'dueReturn'),
       ];
-   
 
-   
+
+
 
 const columns = [
     {
@@ -70,29 +69,13 @@ const columns = [
         label : 'dueReturn',
         minWidth : '100',
     },
-  
+
 ]
 
- 
+
     return (
         <div className="">
-            <nav className="border border-green-400 w-full flex justify-between p-2">
-                <p className="font-bold">Qauafina</p>
 
-
-
-                <div className="flex gap-4">
-                      <IoNotifications size={20} />
-                   <RxAvatar size={20} />
-                    <p className="flex items-center">Student Name  <IoIosArrowDown className="" size={20} /> </p>
-                    </div>
-            </nav>
-
-            <section className="advert border border-green-400">
-                <p>trueeeeee</p>
-                <p>trueeeeee</p>
-                <p>trueeeeee</p>
-            </section>
 
             <section className="grid grid-cols-1 md:grid-cols-2 gap-2 mt-4 p-2">
 
@@ -103,6 +86,8 @@ const columns = [
                   <div className="notice-card bg-[#ffffff] rounded p-2">
                     <header className="text-xl font-bold">Notice Board</header>
                     <hr />
+
+                    <main className=" overflow-auto h-36 md:h-40">
                     <div className="flex gap-2 text-sm p-1">
                         <AiOutlineMail style={{ color: "red" }} size={20} />
                         <p>Fees Reminder ( 11/05/2023)</p>
@@ -131,16 +116,30 @@ const columns = [
                     </div>
                         <hr />
                         </Link>
-                 </div>
+
+                        <Link to=""> <div className="flex gap-2 text-sm p-1">
+                        <AiOutlineMail style={{ color: "red" }} size={20} />
+                        <p className="flex"> <p>Please try me</p>( <div className="flex items-center"><AiOutlineClockCircle style={{ color: "" }} size={15}/> <p>11/05/2023</p></div>)</p>
+                    </div>
+                        <hr />
+                        </Link>
+
+                        <Link to=""> <div className="flex gap-2 text-sm p-1">
+                        <AiOutlineMail style={{ color: "red" }} size={20} />
+                        <p className="flex"> <p>Please try me</p>( <div className="flex items-center"><AiOutlineClockCircle style={{ color: "" }} size={15}/> <p>11/05/2023</p></div>)</p>
+                    </div>
+                        <hr />
+                    </Link>
+                    </main>
+                </div>
+
             </section>
 
             <section className="grid grid-cols-1 md:grid-cols-3 gap-4 p-2">
 
                 <div className="bg-[#ffffff] rounded subject h-64 md:h-72 relative">
-                    <header className="text-xl font-bold h-12 static ">Subject Progress</header>
-                    <hr />
-                    <main className="contentt mt-12 overflow-auto h-60 md:64">
-                    <hr />
+                    <header className="text-xl font-bold">Subject Progress</header>
+                    <main className="contentt  overflow-auto h-60 md:h-64">
                     <div className="flex items-center justify-between p-2 ">
                     <p className="text-sm">Subject</p>
                     <p className="text-sm">33%</p>
@@ -181,16 +180,19 @@ const columns = [
                     <p className="text-sm">34%</p>
                     </div>
                     </main>
-
                 </div>
+
+
                 <div className="bg-[#ffffff] rounded subject h-64 md:h-72 overflow-auto">
                        <header className="text-xl font-bold">Upcoming Assessment</header>
                     <hr />
                 </div>
 
-                <div className="bg-[#ffffff] rounded assignnment h-64 md:h-72 overflow-auto">
-                 <header className="text-xl font-bold">Holiday Assignment</header>
-                    <hr />
+                <div className="bg-[#ffffff] rounded assignnment h-64 md:h-72 relative">
+
+                    <header className="text-xl font-bold">Holiday Assignment</header>
+
+                    <main  className="contentt  overflow-auto h-60 md:h-64">
                     <section className="p-2">
                         <div className="flex gap-4 justify-between">
                             <p className="text-sm">Basic Science</p>
@@ -203,8 +205,10 @@ const columns = [
                         <p className="text-sm">Submission Date: 30/05/2023</p>
                         <p className="text-sm">Status : pending?</p>
                         </div>
-                    </section>
-                    <hr />
+                        </section>
+
+                        <hr />
+
                       <section className="p-2">
                         <div className="flex gap-4 justify-between">
                             <p className="text-sm">Basic Science</p>
@@ -218,9 +222,10 @@ const columns = [
                         <p className="text-sm">Status : pending?</p>
                         </div>
                     </section>
-                    <hr />
-                    <section className="p-2">
 
+                        <hr />
+
+                    <section className="p-2">
                         <div className="flex gap-4 justify-between">
                             <p className="text-sm">Basic Science</p>
                               <div className="flex">
@@ -233,9 +238,10 @@ const columns = [
                         <p className="text-sm">Submission Date: 30/05/2023</p>
                         <p className="text-sm">Status : pending?</p>
                         </div>
-
                     </section>
-                    <hr />
+
+                        <hr />
+
                       <section className="p-2">
                         <div className="flex gap-4 justify-between">
                             <p className="text-sm">Basic Science</p>
@@ -263,18 +269,17 @@ const columns = [
                         <p className="text-sm">Status : pending?</p>
                         </div>
                     </section>
-                     <hr />
+                        <hr />
+                        </main>
                 </div>
-
             </section>
 
-            <section className="grid grid-cols-1 lg:grid-cols-3 gap-2 p-2">
-                <div className="bg-[#ffffff] rounded teachers h-64 md:h-72 relative p-2 overflow-auto">
+            <section className="grid grid-cols-1  lg:grid-cols-[30%_30%_40%] gap-2 p-2">
 
+                <div className="bg-[#ffffff] rounded teachers h-64 md:h-72 relative p-2">
                    <header className="text-xl  font-bold">Teacher's List</header>
-                    <hr />
 
-                    <div className="content">
+                    <main className="overflow-auto h-60 md:h-64">
                     <section className="bg-[#f3f3f3] rounded-sm mt-1 p-1 gap-2 flex">
                         <RxAvatar size={25} />
                         <div>
@@ -284,7 +289,21 @@ const columns = [
                         <button className="bg-[#5AAF4B] text-allwhite text-sm rounded p-0.5">Basic Science</button>
                             </div>
                         </div>
-                    </section>
+                        </section>
+
+                    <hr />
+
+                     <section className="bg-[#f3f3f3] rounded-sm mt-1 p-1 gap-2 flex">
+                        <RxAvatar size={25} />
+                        <div>
+                        <p>Mr Faleke A.0</p>
+                        <div className="flex gap-2">
+                        <p>(10001)</p>
+                        <button className="bg-[#5AAF4B] text-allwhite text-sm rounded p-0.5">Basic Science</button>
+                            </div>
+                        </div>
+                        </section>
+
                     <hr />
 
                      <section className="bg-[#f3f3f3] rounded-sm mt-1 p-1 gap-2 flex">
@@ -309,7 +328,8 @@ const columns = [
                             </div>
                         </div>
                     </section>
-                    <hr />
+                        <hr />
+
 
                      <section className="bg-[#f3f3f3] rounded-sm mt-1 p-1 gap-2 flex">
                         <RxAvatar size={25} />
@@ -321,30 +341,70 @@ const columns = [
                             </div>
                         </div>
                     </section>
-                    <hr />
-{/*
-                     <section className="bg-[#f3f3f3] rounded-sm mt-1 p-1 gap-2 flex">
-                        <RxAvatar size={25} />
-                        <div>
-                        <p>Mr Faleke A.0</p>
-                        <div className="flex gap-2">
-                        <p>(10001)</p>
-                        <button className="bg-[#5AAF4B] text-white text-sm rounded p-0.5">Basic Science</button>
-                            </div>
-                        </div>
-                    </section>
-                    <hr /> */}
-                        </div>
+                        <hr />
+
+                        </main>
 
                 </div>
 
-                <div  className="bg-[#ffffff] rounded assignnment h-64 md:h-72 overflow-auto">
-                    List 2
+                <div className="bg-[#ffffff] rounded assignnment h-64 md:h-72">
+                    <header className="text-xl  font-bold">Visitor List</header>
+                    <hr />
+
+                    <main className="overflow-auto h-60 md:h-64">
+
+                        <section className="bg-[#f3f3f3] p-1 text-sm">
+                            <p>Mr Oladapo</p>
+                            <p>(purpose: PTA)</p>
+                            <p>15/5/2023</p>
+                        </section>
+                        <hr />
+
+                         <section className="bg-[#f3f3f3] p-1 text-sm">
+                            <p>Mr Oladapo</p>
+                            <p>(purpose: PTA)</p>
+                            <p>15/5/2023</p>
+                        </section>
+                        <hr />
+
+                         <section className="bg-[#f3f3f3] p-1 text-sm">
+                            <p>Mr Oladapo</p>
+                            <p>(purpose: PTA)</p>
+                            <p>15/5/2023</p>
+                        </section>
+                        <hr />
+
+                         <section className="bg-[#f3f3f3] p-1 text-sm">
+                            <p>Mr Oladapo</p>
+                            <p>(purpose: PTA)</p>
+                            <p>15/5/2023</p>
+                        </section>
+                        <hr />
+
+                         <section className="bg-[#f3f3f3] p-1 text-sm">
+                            <p>Mr Oladapo</p>
+                            <p>(purpose: PTA)</p>
+                            <p>15/5/2023</p>
+                        </section>
+                        <hr />
+
+                         <section className="bg-[#f3f3f3] p-1 text-sm">
+                            <p>Mr Oladapo</p>
+                            <p>(purpose: PTA)</p>
+                            <p>15/5/2023</p>
+                        </section>
+                        <hr/>
+
+                    </main>
                 </div>
 
-                <div  className="bg-[#ffffff] rounded library h-64 md:h-72 overflow-auto">
+
+
+                <div  className="bg-[#ffffff] rounded library h-64 md:h-72 ">
                       <header className="text-xl  font-bold">Library Book Issue List</header>
                     <hr />
+
+                    <main className="overflow-auto h-60 md:64">
                     {/* //use a table with a fixed header */}
                     <TableContainer component={Paper}>
       <Table sx={{ minWidth: 300 }} stickyHeader  aria-label="sticky table">
@@ -378,7 +438,8 @@ const columns = [
         </TableBody>
       </Table>
     </TableContainer>
-                   
+                </main>
+
                 </div>
 
             </section>

@@ -1,7 +1,7 @@
 import React from "react";
 import Sidebar from "./Sidebar";
 import Test from "./Profile";
-import Test1 from "./Test1";
+import Test1 from "./Grades";
 
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 

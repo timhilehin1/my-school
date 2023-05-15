@@ -20,11 +20,12 @@ const [SideMenu, setSidemenu] = useState(false)
     return (
         <>
 
-        <div className= {`absolute md:fixed ${SideMenu ? "translate-x-0 md:translate-x-0" : "-translate-x-full md:translate-x-0"} bg-[#86efac] w-60 h-screen px-4 py-4 sidebar transition-transform duration-300 ease-in-out`}>
+        <div className= {`absolute md:fixed ${SideMenu ? "translate-x-0 md:translate-x-0" : "-translate-x-full md:translate-x-0"} bg-[#86efac] w-60 h-screen px-4 py-2 sidebar transition-transform duration-300 ease-in-out z-30`}>
             <div className="flex gap-4 items-center">
                 <img className='h-11' src={logo} />
                 <p className="text-xl font-bold">Victoria's</p>
-            </div>
+                </div>
+                <hr className="bg-[red]"/>
 
                 <section className="mt-10 leading-10 flex flex-col gap-6">
 
@@ -34,7 +35,7 @@ const [SideMenu, setSidemenu] = useState(false)
                     </div>
                     </Link>
 
-                    <Link to="test1">
+                    <Link to="grades">
                         <div className="flex items-center">
                         <HiOutlineClipboardDocumentList size={24} />
                         <p>Grades</p>

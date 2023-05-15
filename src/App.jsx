@@ -1,5 +1,8 @@
 import Header from './Components/Header'
 import app from './firebaseConfig'
+import { IoNotifications } from "react-icons/io5";
+import { RxAvatar } from "react-icons/rx";
+import { IoIosArrowDown } from "react-icons/io";
 import Navbar from './Components/Navbar'
 import Hero from './Components/Hero'
 import HistoryCounter from './Components/HistoryCounter'
@@ -15,7 +18,7 @@ import PortalLogin from './Components/PortalLogin'
 import StudentDashboard from './Components/StudentDashboard'
 import Sidebar from './Components/Sidebar'
 import Profile from './Components/Profile'
-import Test1 from './Components/Test1'
+import Grades from './Components/Grades'
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
 
@@ -39,7 +42,29 @@ function App() {
           <Footer />
       </>
     )
-  }
+    }
+
+    const PortalNav = () => {
+        return (
+            <div className='w-full'>
+            <nav className="border border-green-400 w-full flex justify-between p-2">
+                <p className="font-bold">Qauafina</p>
+
+                <div className="flex gap-4">
+                      <IoNotifications size={20} />
+                   <RxAvatar size={20} />
+                    <p className="flex items-center">Student Name  <IoIosArrowDown className="" size={20} /> </p>
+                    </div>
+            </nav>
+
+            <section className="advert border border-green-400">
+                <p>trueeeeee</p>
+                <p>trueeeeee</p>
+                <p>trueeeeee</p>
+            </section>
+            </div>
+        )
+    }
 
   return (
     <div className="App">
@@ -52,9 +77,10 @@ function App() {
                   <Route path='studentDashboard/*' element={<section className="studentDashboard block md:flex ">
                       <Sidebar />
                       <div className='main w-full md:ml-64 bg-[#f3f3f3]'>
+                               <PortalNav/>
                               <Routes>
                               <Route path="profile" element={<Profile />} />
-                              <Route path="test1" element={<Test1 />} />
+                              <Route path="grades" element={<Grades />} />
                               </Routes>
                        </div>
 
