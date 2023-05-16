@@ -5,9 +5,10 @@ import { AiOutlineMenu } from "react-icons/ai";
 import { BiHome } from "react-icons/bi";
 import { HiOutlineClipboardDocumentList } from "react-icons/hi2";
 import { MdAccountBalance } from "react-icons/md";
-import { AiFillCalendar, AiOutlineWarning} from "react-icons/ai";
+import { AiOutlineCalendar, AiOutlineWarning} from "react-icons/ai";
 import { CiSettings } from "react-icons/ci";
-
+import { GrAnnounce } from "react-icons/gr";
+import Chip from '@mui/material/Chip';
 
 function Sidebar() {
 
@@ -22,7 +23,7 @@ const [SideMenu, setSidemenu] = useState(false)
 
         <div className= {`absolute md:fixed ${SideMenu ? "translate-x-0 md:translate-x-0" : "-translate-x-full md:translate-x-0"} bg-[#86efac] w-60 h-screen px-4 py-2 sidebar transition-transform duration-300 ease-in-out z-30`}>
             <div className="flex gap-4 items-center">
-                <img className='h-11' src={logo} />
+                <img className='h-9' src={logo} />
                 <p className="text-xl font-bold">Victoria's</p>
                 </div>
                 <hr className="bg-[red]"/>
@@ -51,8 +52,18 @@ const [SideMenu, setSidemenu] = useState(false)
 
                     <Link to="calendar">
                             <div className="flex items-center">
-                    <AiFillCalendar size={24} />
+                    <AiOutlineCalendar size={24} />
                             <p>Upcoming Events</p>
+                            </div>
+                    </Link>
+
+                    <Link to="notice">
+                            <div className="flex items-center">
+                    <GrAnnounce size={24} />
+                            <p>Notice board</p>
+
+                            <div className="self-start bg-[red] rounded-2xl p-2"> 3 </div>
+
                             </div>
                     </Link>
 

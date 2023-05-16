@@ -124,7 +124,7 @@ const columns = [
                         <hr />
                         </Link>
 
-                        <Link to=""> <div className="flex gap-2 text-sm p-1">
+                        <Link to="/studentDashboard/notice"> <div className="flex gap-2 text-sm p-1">
                         <AiOutlineMail style={{ color: "red" }} size={20} />
                         <p className="flex"> <p>Please try me</p>( <div className="flex items-center"><AiOutlineClockCircle style={{ color: "" }} size={15}/> <p>11/05/2023</p></div>)</p>
                     </div>

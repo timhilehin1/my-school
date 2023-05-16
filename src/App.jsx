@@ -20,6 +20,8 @@ import Sidebar from './Components/Sidebar'
 import Profile from './Components/Profile'
 import Grades from './Components/Grades'
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import Notice from './Components/Notice';
+import Account from './Components/Account';
 
 
 
@@ -81,6 +83,8 @@ function App() {
                               <Routes>
                               <Route path="profile" element={<Profile />} />
                               <Route path="grades" element={<Grades />} />
+                              <Route path="notice" element={<Notice />} />
+                              <Route path="account" element={<Account />} />
                               </Routes>
                        </div>
 
