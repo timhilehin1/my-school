@@ -7,17 +7,22 @@ import { HiOutlineClipboardDocumentList } from "react-icons/hi2";
 import { MdAccountBalance } from "react-icons/md";
 import { AiOutlineCalendar, AiOutlineWarning} from "react-icons/ai";
 import { CiSettings } from "react-icons/ci";
-import { GrAnnounce } from "react-icons/gr";
+import { GrAnnounce, GrTransaction } from "react-icons/gr";
+import { IoMdArrowDropdown, IoMdArrowDropup,IoIosSwap  } from "react-icons/io";
+import { IoBarChartOutline } from "react-icons/io5";
 import Chip from '@mui/material/Chip';
+import { AccessAlarm, ThreeDRotation } from '@mui/icons-material';
+
 
 function Sidebar() {
 
-const [SideMenu, setSidemenu] = useState(false)
+    const [SideMenu, setSidemenu] = useState(false)
+    const [display, setDisplay] = useState(false)
 
   function toggleSidebar(){
       setSidemenu(!SideMenu)
      }
-
+// onClick={()=>{setDisplay(!display)}} 
     return (
         <>
 
@@ -31,52 +36,75 @@ const [SideMenu, setSidemenu] = useState(false)
                 <section className="mt-10 leading-10 flex flex-col gap-6">
 
                     <Link to="profile">
-                        <div className="flex items-center">
+                        <div className="flex items-center gap-2">
                       <BiHome size={24}/> <p>Profile</p>
                     </div>
                     </Link>
 
                     <Link to="grades">
-                        <div className="flex items-center">
+                        <div className="flex items-center gap-2">
                         <HiOutlineClipboardDocumentList size={24} />
                         <p>Grades</p>
                         </div>
                     </Link>
 
-                     <Link to="account">
-                    <div className="flex items-center">
+                     
+                    <div onClick={()=>{setDisplay(!display)}}  className="flex items-center cursor-pointer gap-2">
                         <MdAccountBalance size={24} />
                         <p>Account</p>
+                        <IoMdArrowDropdown size={22} className={display ? 'hidden' : 'block'} />
+                        <IoMdArrowDropup size={22}  className={display ? 'block' : 'hidden'}  />
+                        
+                        </div>
+                    
+                    
+                    <div className={display ? 'flex flex-col gap-6' : 'hidden'}>
+
+                     <Link to="statement">
+                    <div className="flex items-center gap-2">
+                                <IoBarChartOutline size={ 24}/>
+                        <p>Statement of Account</p>
+                        </div>
+                    </Link>
+                    
+                      <Link to="payment">
+                    <div className="flex items-center gap-2">
+                       <IoIosSwap size={24} />
+                        <p>Make Payments</p>
                         </div>
                         </Link>
 
+                        </div>
+
                     <Link to="calendar">
-                            <div className="flex items-center">
+                            <div className="flex items-center gap-2">
                     <AiOutlineCalendar size={24} />
                             <p>Upcoming Events</p>
                             </div>
                     </Link>
 
                     <Link to="notice">
-                            <div className="flex items-center">
+                            <div className="flex items-center gap-2">
                     <GrAnnounce size={24} />
                             <p>Notice board</p>
 
-                            <div className="self-start bg-[red] rounded-2xl p-2"> 3 </div>
+                            {/* <div className="self-start bg-[red] rounded-2xl p-2"> 3 </div> */}
 
                             </div>
                     </Link>
 
-                     <Link to="disciplinary">
-                            <div className="flex items-center">
+                     <Link to="">
+                            <div className="flex items-center gap-2">
                     <AiOutlineWarning size={24} />
                             <p>Disciplinary Issues</p>
                             </div>
-                        </Link>
-
-
+                    </Link>
+                    
+          
+                   
+                        
                     <Link to="settings">
-                        <div className="flex items-center">
+                        <div className="flex items-center gap-2">
                       <CiSettings size={24}/>
                             <p>Settings</p>
                             </div>

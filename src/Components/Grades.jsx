@@ -178,11 +178,11 @@ const rows = [
         <TableHead>
           <TableRow>
             <TableCell className='font-bold'>SUBJECT</TableCell>
-            <TableCell align="right">C.A 1(cumulative assessment) / 30</TableCell>
-            <TableCell align="right">C.A 2(cumulative assessment) / 30</TableCell>
-            <TableCell align="right">EXAM / 70</TableCell>
-            <TableCell align="right">GRADE SCORE</TableCell>
-            <TableCell align="right">TOTAL / 100</TableCell>
+            <TableCell align="center ">C.A 1(cumulative assessment) / 30</TableCell>
+            <TableCell align="center">C.A 2(cumulative assessment) / 30</TableCell>
+            <TableCell align="center">EXAM / 70</TableCell>
+            <TableCell align="center">GRADE SCORE</TableCell>
+            <TableCell align="center">TOTAL / 100</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
@@ -191,11 +191,11 @@ const rows = [
               <TableCell component="th" scope="row">
                 {row.SUBJECT}
               </TableCell>
-              <TableCell align="right">{row.CA1}</TableCell>
-              <TableCell align="right">{row.CA2}</TableCell>
-               <TableCell align="right">{row.EXAM}</TableCell>
-                <TableCell align="right">{row.GRADESCORE}</TableCell>
-              <TableCell align="right">{row.TOTAL}</TableCell>
+              <TableCell align="center">{row.CA1}</TableCell>
+              <TableCell align="center">{row.CA2}</TableCell>
+               <TableCell align="center">{row.EXAM}</TableCell>
+                <TableCell align="center">{row.GRADESCORE}</TableCell>
+              <TableCell align="center">{row.TOTAL}</TableCell>
             </TableRow>
           ))}
         </TableBody>

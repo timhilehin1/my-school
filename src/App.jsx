@@ -22,6 +22,8 @@ import Grades from './Components/Grades'
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Notice from './Components/Notice';
 import Account from './Components/Account';
+import Statement from './Components/Statement';
+import Payments from './Components/payments';
 
 
 
@@ -85,6 +87,8 @@ function App() {
                               <Route path="grades" element={<Grades />} />
                               <Route path="notice" element={<Notice />} />
                               <Route path="account" element={<Account />} />
+                              <Route path="statement" element={<Statement />} />
+                                <Route path="payments" element={<Payments />} />
                               </Routes>
                        </div>
 
