@@ -23,7 +23,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Notice from './Components/Notice';
 import Account from './Components/Account';
 import Statement from './Components/Statement';
-import Payments from './Components/payments';
+import Payments from './Components/Payments';
 
 
 
@@ -88,7 +88,7 @@ function App() {
                               <Route path="notice" element={<Notice />} />
                               <Route path="account" element={<Account />} />
                               <Route path="statement" element={<Statement />} />
-                                <Route path="payments" element={<Payments />} />
+                               <Route path="payments" element={<Payments />} />
                               </Routes>
                        </div>
 

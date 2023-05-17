@@ -67,7 +67,7 @@ function Sidebar() {
                         </div>
                     </Link>
                     
-                      <Link to="payment">
+                      <Link to="payments">
                     <div className="flex items-center gap-2">
                        <IoIosSwap size={24} />
                         <p>Make Payments</p>
