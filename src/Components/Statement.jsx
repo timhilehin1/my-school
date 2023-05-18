@@ -39,6 +39,12 @@ const rowss = [
   createHistoryData('3', '11111', 'medicals', 5000, 0)
 ];
 
+    
+        let NigerianNaira = new Intl.NumberFormat('en-NG', {
+    style: 'currency',
+    currency: 'NGN',
+});
+
 
 
     return (
@@ -96,7 +102,7 @@ const rowss = [
                 {row.SN}
               </TableCell>
               <TableCell align="right">{row.CATEGORY}</TableCell>
-              <TableCell align="right">{row.AMOUNT}</TableCell>
+              <TableCell align="right">{NigerianNaira.format(row.AMOUNT)}</TableCell>
               <TableCell align="right">{row.STATUS}</TableCell>
             </TableRow>
           ))}
@@ -130,7 +136,7 @@ const rowss = [
               </TableCell>
               <TableCell align="right">{row.receiptNo}</TableCell>
               <TableCell align="right">{row.cat}</TableCell>
-                <TableCell align="right">{row.amt}</TableCell>
+                <TableCell align="right"> {NigerianNaira.format(row.amt)}</TableCell>
                 <TableCell align="right">{row.balance}</TableCell>
             </TableRow>
           ))}
