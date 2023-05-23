@@ -24,6 +24,7 @@ import Notice from './Components/Notice';
 import Account from './Components/Account';
 import Statement from './Components/Statement';
 import Payments from './Components/Payments';
+import GenerateTeacher from './Components/GenerateTeacher';
 
 
 
@@ -75,6 +76,7 @@ function App() {
     <Router>
       <Routes>
         <Route path="/" element={<Home />} />
+        <Route path='getTeacher' element={<GenerateTeacher/>}/>
         <Route path="portal" element={<Portal />}/>
         <Route path='portalsignup' element={<PortalSignUp/>}/>
         <Route path='portalLogin' element={<PortalLogin />} />

@@ -9,9 +9,12 @@ function PortalLogin() {
     const auth = getAuth();
     const navigate = useNavigate();
 
+    const [isTeacher, setIsTeacher] = useState(false)
     const [formData, setFormData] = useState({
         email: '',
-        password: ''
+        password: '',
+        loginid:'',
+        teacherpassword:''
     })
 
 
@@ -26,9 +29,12 @@ function PortalLogin() {
 
     }
 
+   
+
 
 
     function handleSubmit(e) {
+        console.log(formData)
         e.preventDefault()
         signInWithEmailAndPassword(auth, formData.email, formData.password)
         .then((userCredentials)=>{
@@ -43,6 +49,10 @@ function PortalLogin() {
     }
 
 
+
+
+   
+
     return (
         <div className='portal h-screen brightness-75 flex justify-center py-8'>
             <section className="bg-gray-400 portal-signup flex flex-col  w-96 px-8 py-4">
@@ -51,7 +61,14 @@ function PortalLogin() {
 
             <form onSubmit={handleSubmit} className='flex flex-col gap-4' >
 
-            <section className="flex flex-col gap-2">
+    
+          
+         <div>
+{ !isTeacher ?
+
+ (
+           <>
+          <section className="flex flex-col gap-2">
              <label htmlFor="email">Email</label>
              <input
               className='p-0.5 rounded'
@@ -61,6 +78,7 @@ function PortalLogin() {
              required
 
               />
+
               </section>
 
               <section className="flex flex-col gap-2">
@@ -74,10 +92,58 @@ function PortalLogin() {
 
               />
               </section>
+              </>
+
+ )
+
+ : 
+
+ (
+              
+    
+              
+              <>
+              <section className="flex flex-col gap-2">
+             <label htmlFor="email">Login ID</label>
+             <input
+              className='p-0.5 rounded'
+             type="text"
+             name="loginid"
+             onChange={handleChange}
+             required
+
+              />
+              </section>
+
+              <section className="flex flex-col gap-2">
+             <label htmlFor="password">Password</label>
+             <input
+              className='p-0.5 rounded'
+             type="password"
+             name="teacherpassword"
+             required
+             onChange={handleChange}
+
+              />
+              </section>
+              </>
+
+ )}
+              </div>
+ 
+    
+
+
+            
+
+              
+
+    
 
                     <p className="text-center">Don't have an account? <span className="underline underline-offset-1"><Link to="/portalsignup">Sign up</Link></span> </p>
               <button className='bg-[#0d2935] px-2 py-2 rounded text-lg text-white' type="submit">Log in</button>
-
+              <button onClick={()=>setIsTeacher(true)} className='bg-[#0d2935] px-2 py-2 rounded text-lg text-white' type="submit">Teacher</button>
+              <button onClick={()=>setIsTeacher(false)} className='bg-[#0d2935] px-2 py-2 rounded text-lg text-white' type="submit">Student</button>
             </form>
 
         </section>
