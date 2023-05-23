@@ -5,9 +5,9 @@ export default {
   "./src/**/*.{js,ts,jsx,tsx}",
   ],
     theme: {
-        colors: {
-         'allwhite' : '#ffffff'
-      },
+      //   colors: {
+      //    'allwhite' : '#ffffff'
+      // },
     extend: {},
   },
   plugins: [],
