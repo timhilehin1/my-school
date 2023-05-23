@@ -1,14 +1,82 @@
-import React from "react";
-import logo from '../assets/small logo.png'
-import TextField from '@mui/material/TextField';
-import Box from '@mui/material/Box';
+import React, { useEffect, useState } from "react";
+import logo from '../assets/small logo.png';
+import db from '../firebaseConfig';
+import { getAuth, createUserWithEmailAndPassword,   } from "firebase/auth";
+import { doc, setDoc, addDoc, collection  } from "firebase/firestore"; 
 
-// only sper-admin should have acccess to you btw
 
-function handleFormData() {
+// only super-admin should have acccess to you btw
+
+
+
+
+function GenerateTeacher(){
+
+    const [showError, setShowError] = useState(null)
+const [formData, setFormData] = useState({
+    fullName: '',
+    date: '',
+    class: '',
+    email: '',
+    password:'',
+    confirmpassword:''
+})
+
+useEffect(()=>{
+
+    if(formData.password === formData.confirmpassword){
+        setShowError(null)
+        
+    }
+    else{
+        setShowError('passwords must match abeg')
+        
+    }
+    
+
+}, [formData])
+
+
+
+function handleChange(e){
+    const {name, value} = e.target
+    setFormData((prevdata)=>{
+        return {
+            ...prevdata,
+            [name] : value
+        }
+    })
 
 }
-function GenerateTeacher(){
+
+
+async function saveTeachersDetails(){
+const TeachersDetails = await addDoc(collection(db, 'TeachersDetails'),  { ...formData, password:'',  confirmpassword: ''});
+alert('succesfully registered')
+}
+
+
+
+
+function handleFormData(e) {
+    e.preventDefault()
+    const auth = getAuth();
+    console.log(formData)
+    createUserWithEmailAndPassword(auth, formData.email, formData.confirmpassword)
+  .then((userCredential) => {
+    // Signed in 
+    const user = userCredential.user;
+     saveTeachersDetails()
+    e.target.reset();
+  })
+  .catch((error) => {
+      alert('unable to register')
+    const errorCode = error.code;
+    const errorMessage = error.message;
+    // ..
+  });
+  
+}
 
     return (
         <div className="portal h-screen brightness-75 py-8 px-4">
@@ -27,6 +95,7 @@ function GenerateTeacher(){
                         type="text"
                         name="fullName"
                         required
+                        onChange={handleChange}
                         />
                     </section>
 
@@ -37,17 +106,19 @@ function GenerateTeacher(){
                         type="date"
                         name="date"
                         required
+                        onChange={handleChange}
                         />
                     </section>
 
 
                        <section className="flex flex-col gap-2 ">
-             <label htmlFor="Class">Class</label>
+             <label htmlFor="class">Class</label>
              <select
              className='p-0.5 rounded'
-            name="Class"
+            name="class"
             defaultValue=""
             required
+            onChange={handleChange}
             >
              <option  value="" disabled selected>Select Class</option>
             <option value="JSS1">JSS1</option>
@@ -61,12 +132,13 @@ function GenerateTeacher(){
 
 
                       <section className="flex flex-col gap-2 mt-4 lg:mt-2">
-                 <label htmlFor="username ">Username</label>
+                 <label htmlFor="username ">Email</label>
                         <input
                         className="p-2 rounded"
-                        type="text"
-                        name="username"
+                        type="email"
+                        name="email"
                         required
+                        onChange={handleChange}
                         />
                     </section>
 
@@ -77,6 +149,8 @@ function GenerateTeacher(){
                         type="password"
                         name="password"
                         required
+                        value={formData.password}
+                        onChange={handleChange}
                         />
                     </section>
 
@@ -87,10 +161,13 @@ function GenerateTeacher(){
                         type="password"
                         name="confirmpassword"
                         required
+                        value={formData.confirmpassword}
+                        onChange={handleChange}
                         />
                     </section>
+                    {showError && <p style={{color:'red'}}>{showError}</p>}
 
-                     <button className='bg-[#0d2935] px-2 py-2 rounded text-lg text-white' type="submit">Create User</button>
+                     <button  className='bg-[#0d2935] px-2 py-2 rounded text-lg text-white' type="submit">Create User</button>
                 </form>
 
 
