@@ -15,7 +15,7 @@ function GenerateTeacher(){
     const [showError, setShowError] = useState(null)
 const [formData, setFormData] = useState({
     fullName: '',
-    date: '',
+    dateOfEmployment: '',
     class: '',
     email: '',
     password:'',
@@ -57,7 +57,8 @@ function handleChange(e){
 //   state: "CA",
 //   country: "USA"
 // });
-const TeachersDetails = await addDoc(collection(db, 'TeachersDetails', `CLASSTEACHER`),  { ...formData, password:'',  confirmpassword: ''});
+
+await setDoc(doc(db, 'TeacherSignupDetails', `${formData.class}_CLASSTEACHER`),  { ...formData, password:'',  confirmpassword: ''});
 alert('succesfully registered')
 }
 
@@ -112,11 +113,11 @@ function handleFormData(e) {
                     </section>
 
                      <section className="flex flex-col gap-2 mt-4">
-                 <label htmlFor="date ">Date of Employment</label>
+                 <label htmlFor="dateOfEmployment ">Date of Employment</label>
                         <input
                         className="p-2 rounded"
                         type="date"
-                        name="date"
+                        name="dateOfEmployment"
                         required
                         onChange={handleChange}
                         />
