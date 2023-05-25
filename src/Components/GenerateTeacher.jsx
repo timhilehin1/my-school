@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import logo from '../assets/small logo.png';
 import db from '../firebaseConfig';
 import { getAuth, createUserWithEmailAndPassword,   } from "firebase/auth";
-import { doc, setDoc, addDoc, collection  } from "firebase/firestore"; 
+import { doc, setDoc, addDoc, collection  } from "firebase/firestore";
 
 
 // only super-admin should have acccess to you btw
@@ -26,13 +26,13 @@ useEffect(()=>{
 
     if(formData.password === formData.confirmpassword){
         setShowError(null)
-        
+
     }
     else{
         setShowError('passwords must match abeg')
-        
+
     }
-    
+
 
 }, [formData])
 
@@ -50,8 +50,14 @@ function handleChange(e){
 }
 
 
-async function saveTeachersDetails(){
-const TeachersDetails = await addDoc(collection(db, 'TeachersDetails'),  { ...formData, password:'',  confirmpassword: ''});
+    async function saveTeachersDetails() {
+
+//     await setDoc(doc(db, "cities", "LA"), {
+//   name: "Los Angeles",
+//   state: "CA",
+//   country: "USA"
+// });
+const TeachersDetails = await addDoc(collection(db, 'TeachersDetails', `CLASSTEACHER`),  { ...formData, password:'',  confirmpassword: ''});
 alert('succesfully registered')
 }
 
@@ -62,9 +68,14 @@ function handleFormData(e) {
     e.preventDefault()
     const auth = getAuth();
     console.log(formData)
-    createUserWithEmailAndPassword(auth, formData.email, formData.confirmpassword)
+    if (!formData.email.includes("victoriaschools.com")){
+          alert('invalid id, contact your administrator')
+    }
+
+    else {
+          createUserWithEmailAndPassword(auth, formData.email, formData.confirmpassword)
   .then((userCredential) => {
-    // Signed in 
+    // Signed in
     const user = userCredential.user;
      saveTeachersDetails()
     e.target.reset();
@@ -75,8 +86,9 @@ function handleFormData(e) {
     const errorMessage = error.message;
     // ..
   });
-  
-}
+    }
+    }
+
 
     return (
         <div className="portal h-screen brightness-75 py-8 px-4">
@@ -122,11 +134,11 @@ function handleFormData(e) {
             >
              <option  value="" disabled selected>Select Class</option>
             <option value="JSS1">JSS1</option>
-                <option value="JSS2">JSS2</option>
-                            <option value="JSS3">JSS3</option>
-                            <option value="SSS1">SSS1</option>
-                            <option value="SSS2">SSS2</option>
-                            <option value="SSS3">JSS3</option>
+            <option value="JSS2">JSS2</option>
+            <option value="JSS3">JSS3</option>
+            <option value="SSS1">SSS1</option>
+            <option value="SSS2">SSS2</option>
+            <option value="SSS3">SSS3</option>
             </select>
               </section>
 

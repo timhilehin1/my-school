@@ -21,7 +21,8 @@ function PortalSignUp() {
         email:'',
         password:'',
         confirmPassword: '',
-        fees:''
+        fees: '',
+        subjects: ''
     })
 
     function handleChange(event){
@@ -38,12 +39,15 @@ function PortalSignUp() {
   async function QueryFeeswithClass() {
        //go through list of of collection, and run the filter query, set the result of the query as student fees.
         const StudentDetailsRef = collection(db, "StudentDetails")
-        const q = query(StudentDetailsRef, where('currentClass', '==', formData.class))
+      const q = query(StudentDetailsRef, where('currentClass', '==', formData.class))
+
         const querySnapshot = await getDocs(q)
 
         const upDatedFormData = { ...formData, password:'',  confirmPassword: ''}
-        querySnapshot.forEach((doc) => {
-            upDatedFormData.fees = doc.data().fees;
+      querySnapshot.forEach((doc) => {
+            //check for class and get list of subjects associated with that class
+          upDatedFormData.fees = doc.data().fees;
+          upDatedFormData.subjects = doc.data().subjects
         }
       )
 
@@ -141,9 +145,15 @@ function PortalSignUp() {
             <option value="Jss1">JSS1</option>
             <option value="JSS2">JSS2</option>
             <option value="JSS3">JSS3</option>
-            <option value="SSS1">SSS1</option>
-            <option value="SSS2">SSS2</option>
-            <option value="SSS3">SSS3</option>
+            <option value="SSS1_SCIENCE">SSS1(SCIENCE)</option>
+            <option value="SSS1_COMMERCIAL">SSS1(COMMERCIAL)</option>
+            <option value="SSS1_ARTS">SSS1(ARTS)</option>
+            <option value="SSS2_SCIENCE">SSS2(SCIENCE)</option>
+            <option value="SSS2_COMMERCIAL">SSS2(COMMERCIAL)</option>
+            <option value="SSS2_ARTS">SSS2(ARTS)</option>
+            <option value="SSS3_SCIENCE">SSS3(SCIENCE)</option>
+            <option value="SSS3_COMMERCIAL">SSS3(COMMERCIAL)</option>
+            <option value="SSS3_ARTS">SSS3(ARTS)</option>
             </select>
             </section>
 

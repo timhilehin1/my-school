@@ -2,6 +2,9 @@ import { React, useState } from "react";
 import logo from '../assets/small logo.png'
 import { Link, useNavigate  } from "react-router-dom";
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
+import db from '../firebaseConfig'
+import { collection, addDoc, doc, setDoc,  query, where, getDoc, getDocs, onSnapshot } from "firebase/firestore";
+import { async } from "@firebase/util";
 
 
 function PortalLogin() {
@@ -29,7 +32,7 @@ function PortalLogin() {
 
     }
 
-   
+
 
 
 
@@ -38,9 +41,15 @@ function PortalLogin() {
         e.preventDefault()
         signInWithEmailAndPassword(auth, formData.email, formData.password)
         .then((userCredentials)=>{
-            alert('user logged in')
             console.log(userCredentials)
-            navigate("/studentDashboard/profile")
+            if (userCredentials.user.email.includes("victoriaschools.com")) {
+                alert('welcome admin')
+            }
+            else {
+                      alert('this is a student')
+                      navigate("/studentDashboard/profile")
+            }
+
         })
         .catch((error)=>{
             alert('an error occured')
@@ -49,9 +58,32 @@ function PortalLogin() {
     }
 
 
+    // async function setNewDoc() {
+    //     //add document model
+    //    console.log("God did")
+    //    await setDoc(doc(db, 'StudentDetails', 'JSS3'), {
+    //        currentClass: 'JSS3',
+    //        fees: 70000,
+    //        subjects: {
+    //           basicScience : "Basic Science",
+    //          creativeArts :  "Creative Arts and Reasoning",
+    //          english : "English Language",
+    //          healthEdu :  "Health Education",
+    //           history: "History and Related Studies",
+    //            iT : "Information Technology",
+    //           maths: "Mathematics",
+    //         socials : "Social Studies"
+
+    //        }
+    //      })
+    // }
 
 
-   
+
+
+
+
+
 
     return (
         <div className='portal h-screen brightness-75 flex justify-center py-8'>
@@ -61,8 +93,8 @@ function PortalLogin() {
 
             <form onSubmit={handleSubmit} className='flex flex-col gap-4' >
 
-    
-          
+
+
          <div>
 { !isTeacher ?
 
@@ -96,12 +128,12 @@ function PortalLogin() {
 
  )
 
- : 
+ :
 
  (
-              
-    
-              
+
+
+
               <>
               <section className="flex flex-col gap-2">
              <label htmlFor="email">Login ID</label>
@@ -130,15 +162,15 @@ function PortalLogin() {
 
  )}
               </div>
- 
-    
 
 
-            
 
-              
 
-    
+
+
+
+
+
 
                     <p className="text-center">Don't have an account? <span className="underline underline-offset-1"><Link to="/portalsignup">Sign up</Link></span> </p>
               <button className='bg-[#0d2935] px-2 py-2 rounded text-lg text-white' type="submit">Log in</button>
