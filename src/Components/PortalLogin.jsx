@@ -80,7 +80,7 @@ function PortalLogin() {
 
 
 
-
+// bg-[#0d2935]
 
 
 
@@ -90,11 +90,9 @@ function PortalLogin() {
             <section className="bg-gray-400 portal-signup flex flex-col  w-96 px-8 py-4">
             <p className="text-center mx-auto"><img className='h-11' src={logo}/></p>
             <p className="text-center text-2xl font-semibold">LOG IN</p>
+                { isTeacher && <p className="text-center text-base">Welcome admin!</p>}
 
             <form onSubmit={handleSubmit} className='flex flex-col gap-4' >
-
-
-
          <div>
 { !isTeacher ?
 
@@ -108,7 +106,6 @@ function PortalLogin() {
              name="email"
              onChange={handleChange}
              required
-
               />
 
               </section>
@@ -172,10 +169,11 @@ function PortalLogin() {
 
 
 
-                    <p className="text-center">Don't have an account? <span className="underline underline-offset-1"><Link to="/portalsignup">Sign up</Link></span> </p>
-              <button className='bg-[#0d2935] px-2 py-2 rounded text-lg text-white' type="submit">Log in</button>
-              <button onClick={()=>setIsTeacher(true)} className='bg-[#0d2935] px-2 py-2 rounded text-lg text-white' type="submit">Teacher</button>
-              <button onClick={()=>setIsTeacher(false)} className='bg-[#0d2935] px-2 py-2 rounded text-lg text-white' type="submit">Student</button>
+                    <p className="text-center">Not a registered student? <span className="underline underline-offset-1"><Link to="/portalsignup">Sign up</Link></span> </p>
+                    <button className='bg-[#0d2935] px-2 py-2 rounded text-lg text-white ' type="submit">Log in</button>
+                    {/* conditionally render colours and button activeness based on state */}
+              <button type="button" onClick={()=>setIsTeacher(true)}  className={`bg-${isTeacher ? '[#0d2935]' : '[#526D82]'} px-2 py-2 rounded text-lg text-white hover:bg-[#0d2935]`}> Teacher</button>
+              <button  type="button"  onClick={()=>setIsTeacher(false)} className={`bg-${isTeacher ? '[#526D82]' : '[#0d2935]'} px-2 py-2 rounded text-lg text-white hover:bg-[#0d2935]`} >Student</button>
             </form>
 
         </section>

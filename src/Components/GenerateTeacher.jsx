@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import logo from '../assets/small logo.png';
+import { Link, useNavigate } from "react-router-dom";
 import db from '../firebaseConfig';
 import { getAuth, createUserWithEmailAndPassword,   } from "firebase/auth";
 import { doc, setDoc, addDoc, collection  } from "firebase/firestore";
@@ -99,6 +100,7 @@ function handleFormData(e) {
                     <img className='h-16' src={logo} alt="" />
                 </div>
                 <p className="text-center text-2xl">Register my Teacher</p>
+                 <p className=' text-center '>Already have an account? <span className="underline underline-offset-1"><Link to="/portalLogin">LOG-IN</Link></span></p>
 
                 <form className="flex flex-col gap-4" onSubmit={handleFormData}>
                   <section className="flex flex-col gap-2 mt-4">

@@ -25,6 +25,7 @@ import Account from './Components/Account';
 import Statement from './Components/Statement';
 import Payments from './Components/Payments';
 import GenerateTeacher from './Components/GenerateTeacher';
+import AdminDashboard from './Components/admin/Admindashboard';
 
 
 
@@ -91,7 +92,8 @@ function App() {
                               <Route path="account" element={<Account />} />
                               <Route path="statement" element={<Statement />} />
                                <Route path="payments" element={<Payments />} />
-                              </Routes>
+                          </Routes>
+        <Route path='admin' element={<AdminDashboard/>}></Route>
                        </div>
 
                   </section>}/>
